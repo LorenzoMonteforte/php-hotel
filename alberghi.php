@@ -46,6 +46,7 @@
             ],
     
         ];
+        $voto = $_GET["voto"];
     ?>
 </head>
 <body>
@@ -70,6 +71,7 @@
             }
         ?>
     </ul>
+
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -96,6 +98,39 @@
                             <td>".$hotels[$i]["vote"]."</td>
                             <td>".$hotels[$i]["distance_to_center"]."</td>
                           </tr>";
+                }
+            ?>
+        </tbody>
+    </table>
+    
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Parcheggio</th>
+                <th scope="col">Voto</th>
+                <th scope="col">Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                for($i=0; $i<sizeof($hotels); $i++){
+                    $parking;
+                    if($hotels[$i]["parking"]==true){
+                        $parking = "Si";
+                    }else{
+                        $parking = "No";
+                    }
+                    if($hotels[$i]["vote"] >= $voto){
+                        echo "<tr>
+                            <td>".$hotels[$i]["name"]."</td>
+                            <td>".$hotels[$i]["description"]."</td>
+                            <td>".$parking."</td>
+                            <td>".$hotels[$i]["vote"]."</td>
+                            <td>".$hotels[$i]["distance_to_center"]."</td>
+                          </tr>";
+                    }
                 }
             ?>
         </tbody>
